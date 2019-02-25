@@ -6,8 +6,5 @@ export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 export const VOTE_COMMENT = 'VOTE_COMMENT';
 
 export function receiveComments(comments) {
-  return {
-    type: RECEIVE_COMMENTS,
-    comments,
-  };
+  return { type: RECEIVE_COMMENTS, comments };
 }

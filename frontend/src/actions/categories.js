@@ -1,12 +1,9 @@
-import { getCategories } from '../api';
+import { getCategories } from '../api/api';
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 
 function receiveCategories(categories) {
-  return {
-    type: RECEIVE_CATEGORIES,
-    categories,
-  };
+  return { type: RECEIVE_CATEGORIES, categories };
 }
 
 export function handleReceiveCategories() {
