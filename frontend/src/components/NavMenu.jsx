@@ -44,8 +44,15 @@ class NavMenu extends PureComponent {
               }
             </Dropdown.Menu>
           </Dropdown>
-          {/* New Post button */}
+          {/* Order posts dropdown */}
+          <Dropdown text="Order posts by" item simple>
+            <Dropdown.Menu>
+              <Dropdown.Item>Score</Dropdown.Item>
+              <Dropdown.Item>Date</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
           <Menu.Menu position="right">
+            {/* New Post button */}
             <Menu.Item>
               <Button as={Link} to="/new-post" primary>
                 New Post

@@ -35,7 +35,6 @@ class Feed extends PureComponent {
 
   render() {
     const { posts } = this.props;
-
     return (
       <Container style={{ paddingTop: '7em' }}>
         {
