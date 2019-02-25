@@ -1,6 +1,7 @@
-import { createPost } from '../api';
+import { getPosts, getPostsByCategory } from '../api';
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+export const RECEIVE_POSTS_BY_CATEGORY = 'RECEIVE_POSTS_BY_CATEGORY';
 export const CREATE_POST = 'CREATE_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const DELETE_POST = 'DELETE_POST';
@@ -11,6 +12,16 @@ export function receivePosts(posts) {
     type: RECEIVE_POSTS,
     posts,
   };
+}
+
+export function handleReceivePosts(category) {
+  return dispatch => (
+    category === undefined || category === ''
+      ? getPosts()
+      : getPostsByCategory(category)
+  ).then((posts) => {
+    dispatch(receivePosts(posts));
+  });
 }
 
 /* function addPost(post) {

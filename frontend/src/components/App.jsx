@@ -1,38 +1,38 @@
+/* eslint-disable react/forbid-prop-types */
+
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
-import Dashboard from './Dashboard';
-import { handleInitialData } from '../actions/shared';
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Dimmer, Loader } from 'semantic-ui-react';
+import { handleReceiveCategories } from '../actions/categories';
+import Feed from './Feed';
+import NavMenu from './NavMenu';
 
 class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(handleInitialData());
+    dispatch(handleReceiveCategories());
   }
 
   render() {
     const { loading } = this.props;
-    
+
     return (
       <Router>
-        <Fragment>
-          <div className="container">
-            {loading === true
-              ? (
-                <Dimmer active>
-                  <Loader />
-                </Dimmer>
-              )
-              : (
-                <div>
-                  <Route path="/" exact component={Dashboard} />
-                </div>
-              )}
-          </div>
-        </Fragment>
+        {loading === true
+          ? (
+            <Dimmer active>
+              <Loader />
+            </Dimmer>
+          )
+          : (
+            <Fragment>
+              <NavMenu />
+              <Route path="/" exact component={Feed} />
+              <Route path="/:category" exact component={Feed} />
+            </Fragment>
+          )}
       </Router>
     );
   }
@@ -43,14 +43,14 @@ App.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-function mapStateToProps({ posts, categories }) {
-  return {
-    loading: isEmpty(posts) || isEmpty(categories)
-  }
-}
-
 function isEmpty(obj) {
   return Object.keys(obj).length === 0 && obj.constructor === Object;
+}
+
+function mapStateToProps({ categories }) {
+  return {
+    loading: isEmpty(categories),
+  };
 }
 
 export default connect(mapStateToProps)(App);

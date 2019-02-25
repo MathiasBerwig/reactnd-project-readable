@@ -105,19 +105,3 @@ export const voteComment = (commentId, option) => fetch(`${api}/comments/${comme
   body: JSON.stringify({ option }),
 }).then(res => res.json());
 // #endregion
-
-// #region Initial Data
-
-export function getInitialData(category) {
-  return Promise.all([
-    getCategories(),
-    category === undefined
-      ? getPosts()
-      : getPostsByCategory(category),
-  ]).then(([categories, posts]) => ({
-    categories,
-    posts,
-  }));
-}
-
-// #endregion
