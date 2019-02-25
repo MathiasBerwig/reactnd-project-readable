@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 import {
   Segment,
   Icon,
@@ -34,4 +35,10 @@ FeedEmpty.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-export default FeedEmpty;
+function mapStateToProps({ loading }) {
+  return {
+    loading: typeof loading === 'object' || loading,
+  };
+}
+
+export default connect(mapStateToProps)(FeedEmpty);

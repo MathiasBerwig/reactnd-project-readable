@@ -34,13 +34,13 @@ class Feed extends PureComponent {
   }
 
   render() {
-    const { posts, isLoading } = this.props;
+    const { posts } = this.props;
 
     return (
       <Container style={{ paddingTop: '7em' }}>
         {
           posts.length === 0
-            ? <FeedEmpty loading={isLoading} />
+            ? <FeedEmpty />
             : (
               <List divided relaxed>
                 {
@@ -60,20 +60,17 @@ class Feed extends PureComponent {
 
 Feed.propTypes = {
   posts: PropTypes.array,
-  isLoading: PropTypes.bool,
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 };
 
 Feed.defaultProps = {
-  isLoading: true,
   posts: [],
 };
 
-function mapStateToProps({ posts, loading }) {
+function mapStateToProps({ posts }) {
   return {
     posts: Object.values(posts),
-    isLoading: loading.show,
   };
 }
 

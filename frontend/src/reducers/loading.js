@@ -4,10 +4,7 @@ export default function loading(state = {}, action) {
   switch (action.type) {
     case HIDE_LOADING:
     case SHOW_LOADING:
-      return {
-        ...state,
-        show: action.show,
-      };
+      return action.show;
     default:
       return state;
   }
