@@ -40,7 +40,8 @@ class NavMenu extends PureComponent {
                   >
                     {cat.name}
                   </Dropdown.Item>
-                ))}
+                ))
+              }
             </Dropdown.Menu>
           </Dropdown>
           {/* New Post button */}
