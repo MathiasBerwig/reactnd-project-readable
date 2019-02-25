@@ -22,7 +22,7 @@ class NavMenu extends PureComponent {
           <Menu.Item as={Link} to="/" header>
             <Image
               size="mini"
-              src="/logo.png"
+              src="/img/logo.png"
               style={{ marginRight: '1.5em' }}
             />
             Readable
