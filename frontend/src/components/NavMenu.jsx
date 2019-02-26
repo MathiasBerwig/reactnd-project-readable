@@ -11,7 +11,7 @@ import {
   Dropdown,
   Button,
 } from 'semantic-ui-react';
-import { SortDropdown } from './SortDropdown';
+import SortDropdown from './SortDropdown';
 
 class NavMenu extends PureComponent {
   render() {

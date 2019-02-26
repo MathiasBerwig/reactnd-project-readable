@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card } from 'semantic-ui-react';
+import { formatDate } from '../api/helper';
 
 export default class Post extends PureComponent {
   render() {
@@ -7,7 +8,7 @@ export default class Post extends PureComponent {
 
     return (
       <Card>
-        <Card.Content>{ post.title }</Card.Content>
+        <Card.Content>{`Score: ${post.voteScore} \n Date: ${formatDate(post.timestamp)}`}</Card.Content>
       </Card>
     )
   }

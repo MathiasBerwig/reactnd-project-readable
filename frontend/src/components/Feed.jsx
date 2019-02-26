@@ -6,6 +6,7 @@ import { List, Container } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { handleReceivePosts } from '../actions/posts';
+import { orderPosts } from '../api/helper';
 import Post from './Post';
 import FeedEmpty from './FeedEmpty';
 
@@ -34,16 +35,18 @@ class Feed extends PureComponent {
   }
 
   render() {
-    const { posts } = this.props;
+    const { posts, orderBy } = this.props;
+    const orderedPosts = orderPosts(posts, orderBy);
+
     return (
       <Container style={{ paddingTop: '7em' }}>
         {
-          posts.length === 0
+          orderedPosts.length === 0
             ? <FeedEmpty />
             : (
               <List divided relaxed>
                 {
-                  posts.map(post => (
+                  orderedPosts.map(post => (
                     <List.Item key={post.id}>
                       <Post post={post} />
                     </List.Item>
@@ -59,16 +62,19 @@ class Feed extends PureComponent {
 
 Feed.propTypes = {
   posts: PropTypes.array,
+  orderBy: PropTypes.string,
   dispatch: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 };
 
 Feed.defaultProps = {
   posts: [],
+  orderBy: undefined,
 };
 
-function mapStateToProps({ posts }) {
+function mapStateToProps({ posts, preferences = {} }) {
   return {
+    orderBy: preferences.orderBy,
     posts: Object.values(posts),
   };
 }

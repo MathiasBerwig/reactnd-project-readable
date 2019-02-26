@@ -5,35 +5,46 @@ import { Dropdown } from 'semantic-ui-react';
 import { handleSavePreferenceOrderPosts as saveOrderByPref } from '../actions/preferences';
 
 const options = [
-  { key: 1, text: 'Date', value: 'date' },
-  { key: 2, text: 'Score', value: 'score' },
+  { key: 1, text: 'Biggest Score', value: 'score' },
+  { key: 2, text: 'Newest', value: 'newest' },
+  { key: 3, text: 'Oldest', value: 'oldest' },
 ];
 
 class SortDropdown extends Component {
-  // handleChange = (e, { value }) => {
-  //   const { dispatch } = this.props;
-  //   dispatch(saveOrderByPref(value));
-  // }
+  handleChange = (e, { value }) => {
+    const { dispatch } = this.props;
+    dispatch(saveOrderByPref(value));
+  }
 
   render() {
     const { orderBy } = this.props;
-    // onChange={this.onSortChange}
     return (
-      
-      <Dropdown item simple text="Order posts by" options={options}  value={orderBy} />
+      <Dropdown
+        item
+        simple
+        value={orderBy}
+        options={options}
+        text="Order posts by"
+        onChange={this.handleChange}
+      />
     );
   }
 }
 
 SortDropdown.propTypes = {
-  orderBy: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  orderBy: PropTypes.string,
 };
 
-function mapStateToProps({ preferences }) {
-  //const { orderBy } = preferences;
+SortDropdown.defaultProps = {
+  orderBy: 'score',
+};
+
+function mapStateToProps({ preferences = {} }) {
+  const { orderBy } = preferences;
   return {
-    orderBy: 'date',
+    orderBy,
   };
 }
 
-export default connect((mapStateToProps)(SortDropdown));
+export default connect(mapStateToProps)(SortDropdown);
