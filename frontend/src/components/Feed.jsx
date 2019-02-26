@@ -35,20 +35,20 @@ class Feed extends PureComponent {
   }
 
   render() {
-    const { posts, orderBy } = this.props;
+    const { posts, orderBy, dispatch } = this.props;
     const orderedPosts = orderPosts(posts, orderBy);
 
     return (
       <Container style={{ paddingTop: '7em' }}>
         {
-          orderedPosts.length === 0
+          orderedPosts === undefined || orderedPosts.length === 0
             ? <FeedEmpty />
             : (
-              <List divided relaxed>
+              <List relaxed>
                 {
-                  orderedPosts.map(post => (
-                    <List.Item key={post.id}>
-                      <Post post={post} />
+                  orderedPosts.map(p => (
+                    <List.Item key={p.id}>
+                      <Post post={p} dispatch={dispatch} />
                     </List.Item>
                   ))
                 }
@@ -69,7 +69,7 @@ Feed.propTypes = {
 
 Feed.defaultProps = {
   posts: [],
-  orderBy: undefined,
+  orderBy: 'score',
 };
 
 function mapStateToProps({ posts, preferences = {} }) {

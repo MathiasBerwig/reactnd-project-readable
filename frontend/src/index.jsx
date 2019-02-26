@@ -3,11 +3,15 @@ import { createStore } from 'redux';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
+import JavascriptTimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 import App from './components/App';
 import reducer from './reducers';
 import middleware from './middleware';
 
 const store = createStore(reducer, middleware);
+
+JavascriptTimeAgo.locale(en);
 
 ReactDOM.render(
   <Provider store={store}>
