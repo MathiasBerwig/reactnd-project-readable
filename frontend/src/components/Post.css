@@ -1,0 +1,15 @@
+.authorName {
+  font-weight: 500;
+}
+
+.actions {
+  display: block;
+  padding-top: 1em;
+}
+.actions .icon {
+  margin-right: .4em;
+}
+
+.actions .choice:not(:first-child) {
+  margin-left: 1.5em;
+}
