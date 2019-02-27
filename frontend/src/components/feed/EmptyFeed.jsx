@@ -21,10 +21,11 @@ function EmptyFeed(props) {
           <Icon name="add circle" />
           <Header.Content>
             This category has no posts.
+            <Header.Subheader>Write the first one ;)</Header.Subheader>
           </Header.Content>
         </Header>
         <Segment.Inline>
-          <Button primary as={Link} to="/new-post">Create Post</Button>
+          <Button primary as={Link} to="/new-post">New Post</Button>
           <Button as={Link} to="/">Show all posts</Button>
         </Segment.Inline>
       </Segment>
