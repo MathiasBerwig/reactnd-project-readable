@@ -1,10 +1,31 @@
-import { getPosts, getPostsByCategory, votePost, updatePost } from '../api/api';
+import {
+  getPost,
+  getPosts,
+  getPostsByCategory,
+  votePost,
+  updatePost,
+} from '../api/api';
 import { showLoading, hideLoading } from './loading';
 
+export const RECEIVE_POST = 'RECEIVE_POST';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const CREATE_POST = 'CREATE_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const DELETE_POST = 'DELETE_POST';
+
+function receivePostAction(post) {
+  return { type: RECEIVE_POST, post };
+}
+
+export function handleReceivePost(postId) {
+  return (dispatch) => {
+    dispatch(showLoading());
+    getPost(postId).then((post) => {
+      dispatch(receivePostAction(post));
+      dispatch(hideLoading());
+    });
+  };
+}
 
 function receivePostsAction(posts) {
   return { type: RECEIVE_POSTS, posts };

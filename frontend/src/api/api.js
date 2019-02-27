@@ -23,7 +23,7 @@ export const getCategories = () => fetch(`${api}/categories`, { headers })
 // #region Posts
 
 export const getPost = postId => fetch(`${api}/posts/${postId}`, { headers })
-  .then(res => res.json());
+  .then(res => (res.ok ? res.json() : undefined));
 
 export const getPosts = () => fetch(`${api}/posts`, { headers })
   .then(res => res.json());

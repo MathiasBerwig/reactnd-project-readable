@@ -6,8 +6,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { handleReceiveCategories } from '../actions/categories';
+import './App.css';
 import Feed from './Feed';
 import NavMenu from './NavMenu';
+import SinglePostContainer from './SinglePostContainer';
 
 class App extends Component {
   componentDidMount() {
@@ -30,6 +32,7 @@ class App extends Component {
             <Fragment>
               <NavMenu />
               <Route path="/" exact component={Feed} />
+              <Route path="/posts/:postId" component={SinglePostContainer} />
               <Route path="/:category" exact component={Feed} />
             </Fragment>
           )}

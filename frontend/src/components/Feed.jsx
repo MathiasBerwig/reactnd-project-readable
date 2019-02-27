@@ -35,11 +35,11 @@ class Feed extends PureComponent {
   }
 
   render() {
-    const { posts, orderBy, dispatch } = this.props;
+    const { posts, orderBy } = this.props;
     const orderedPosts = orderPosts(posts, orderBy);
 
     return (
-      <Container style={{ paddingTop: '7em' }}>
+      <Container className="post-container">
         <Header as="h1">{this.getCurrentCategoryFromPath() || 'All Posts'}</Header>
         {
           orderedPosts === undefined || orderedPosts.length === 0
@@ -49,7 +49,7 @@ class Feed extends PureComponent {
                 {
                   orderedPosts.map(p => (
                     <List.Item key={p.id}>
-                      <Post post={p} dispatch={dispatch} />
+                      <Post postId={p.id} />
                     </List.Item>
                   ))
                 }

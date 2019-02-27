@@ -12,3 +12,10 @@ export function orderPosts(posts, orderBy) {
       return posts;
   }
 }
+
+export function formatCommentCount(commentCount) {
+  if (commentCount === 0) {
+    return 'no comments';
+  }
+  return `${commentCount} comment${commentCount === 1 ? '' : 's'}`;
+}

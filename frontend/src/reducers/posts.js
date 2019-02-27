@@ -1,7 +1,10 @@
-import { RECEIVE_POSTS, UPDATE_POST } from '../actions/posts';
+import { RECEIVE_POSTS, UPDATE_POST, RECEIVE_POST } from '../actions/posts';
 
 export default function posts(state = {}, action) {
   switch (action.type) {
+    case RECEIVE_POST: {
+      return action.post ? [action.post] : [];
+    }
     case RECEIVE_POSTS:
       return action.posts;
     case UPDATE_POST:
