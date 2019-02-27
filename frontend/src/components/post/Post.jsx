@@ -11,8 +11,8 @@ import {
 import { Link } from 'react-router-dom';
 import ReactTimeAgo from 'react-time-ago';
 import { connect } from 'react-redux';
-import { handleVotePost, handleReceivePost } from '../actions/posts';
-import { formatCommentCount } from '../api/helper';
+import { handleVotePost, handleReceivePost } from '../../actions/posts';
+import { formatCommentCount } from '../../api/helper';
 import './Post.css';
 import PostEmpty from './PostEmpty';
 

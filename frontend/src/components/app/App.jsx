@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Dimmer, Loader } from 'semantic-ui-react';
-import { handleReceiveCategories } from '../actions/categories';
+import { handleReceiveCategories } from '../../actions/categories';
 import './App.css';
-import Feed from './Feed';
-import NavMenu from './NavMenu';
-import SinglePostContainer from './SinglePostContainer';
+import Feed from '../feed/Feed';
+import NavMenu from '../menu/NavMenu';
+import SinglePostContainer from '../post/SinglePostContainer';
 
 class App extends Component {
   componentDidMount() {
@@ -31,8 +31,11 @@ class App extends Component {
           : (
             <Fragment>
               <NavMenu />
+              {/* Show Feed with all posts */}
               <Route path="/" exact component={Feed} />
+              {/* Show specific post (contains nested routes) */}
               <Route path="/posts/:postId" component={SinglePostContainer} />
+              {/* Show Feed with category-specific posts */}
               <Route path="/:category" exact component={Feed} />
             </Fragment>
           )}

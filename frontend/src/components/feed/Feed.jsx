@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { List, Container, Header } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { handleReceivePosts } from '../actions/posts';
-import { orderPosts } from '../api/helper';
-import Post from './Post';
+import { handleReceivePosts } from '../../actions/posts';
+import { orderPosts } from '../../api/helper';
+import Post from '../post/Post';
 import FeedEmpty from './FeedEmpty';
 
 class Feed extends PureComponent {

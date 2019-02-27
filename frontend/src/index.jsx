@@ -5,7 +5,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 import JavascriptTimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
-import App from './components/App';
+import App from './components/app/App';
 import reducer from './reducers';
 import middleware from './middleware';
 

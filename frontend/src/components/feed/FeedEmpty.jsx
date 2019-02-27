@@ -20,7 +20,7 @@ function FeedEmpty(props) {
         <Header icon textAlign="center">
           <Icon name="add circle" />
           <Header.Content>
-            No posts are listed for this category.
+            This category has no posts.
           </Header.Content>
         </Header>
         <Segment.Inline>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
-import { handleSavePreferenceOrderPosts as saveOrderByPref } from '../actions/preferences';
+import { handleSavePreferenceOrderPosts as saveOrderByPref } from '../../actions/preferences';
 
 const options = [
   { key: 1, text: 'Biggest Score', value: 'score' },
@@ -10,7 +10,7 @@ const options = [
   { key: 3, text: 'Oldest', value: 'oldest' },
 ];
 
-class SortDropdown extends Component {
+class SortPostsDropdown extends Component {
   handleChange = (e, { value }) => {
     const { dispatch } = this.props;
     dispatch(saveOrderByPref(value));
@@ -31,12 +31,12 @@ class SortDropdown extends Component {
   }
 }
 
-SortDropdown.propTypes = {
+SortPostsDropdown.propTypes = {
   dispatch: PropTypes.func.isRequired,
   orderBy: PropTypes.string,
 };
 
-SortDropdown.defaultProps = {
+SortPostsDropdown.defaultProps = {
   orderBy: 'score',
 };
 
@@ -47,4 +47,4 @@ function mapStateToProps({ preferences = {} }) {
   };
 }
 
-export default connect(mapStateToProps)(SortDropdown);
+export default connect(mapStateToProps)(SortPostsDropdown);

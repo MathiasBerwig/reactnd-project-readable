@@ -11,7 +11,7 @@ import {
   Dropdown,
   Button,
 } from 'semantic-ui-react';
-import SortDropdown from './SortDropdown';
+import SortPostsDropdown from './SortPostsDropdown';
 
 class NavMenu extends PureComponent {
   render() {
@@ -46,7 +46,7 @@ class NavMenu extends PureComponent {
             </Dropdown.Menu>
           </Dropdown>
           {/* Order posts dropdown */}
-          <SortDropdown />
+          <SortPostsDropdown />
           <Menu.Menu position="right">
             {/* New Post button */}
             <Menu.Item>
