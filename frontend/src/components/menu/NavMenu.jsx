@@ -46,7 +46,9 @@ class NavMenu extends PureComponent {
             </Dropdown.Menu>
           </Dropdown>
           {/* Order posts dropdown */}
-          <SortPostsDropdown />
+          {
+            (pathname === '/' || !pathname.includes('/posts/')) && <SortPostsDropdown />
+          }
           <Menu.Menu position="right">
             {/* New Post button */}
             <Menu.Item>
