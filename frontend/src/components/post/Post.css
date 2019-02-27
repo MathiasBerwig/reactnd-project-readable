@@ -1,15 +1,36 @@
-.authorName {
+#title {
+  margin-bottom: 0;
+}
+
+#title > a {
+  color: black;
+}
+
+.postInfo {
+  size: 14px;
+  color: gray;
+  display: block;
+  padding-top: .25em;
+}
+
+.postInfo > .authorName {
   font-weight: 500;
 }
 
-.actions {
+.bodyText {
+  size: 16px;
+  padding-top: 1.5em;
+  padding-bottom: .5em;
+}
+
+.post-actions-container {
   display: block;
   padding-top: 1em;
 }
-.actions .icon {
+.post-actions-container .icon {
   margin-right: .4em;
 }
 
-.actions .choice:not(:first-child) {
+.post-actions-container .action:not(:first-child) {
   margin-left: 1.5em;
 }

@@ -13,6 +13,9 @@ export const CREATE_POST = 'CREATE_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
+export const POST_UP_VOTE_VALUE = 'upVote';
+export const POST_DOWN_VOTE_VALUE = 'downVote';
+
 function receivePostAction(post) {
   return { type: RECEIVE_POST, post };
 }
