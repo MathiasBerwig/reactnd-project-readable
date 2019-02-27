@@ -36,7 +36,7 @@ class NavMenu extends PureComponent {
                   <Dropdown.Item
                     as={Link}
                     key={cat.path}
-                    to={cat.path}
+                    to={`/${cat.path}`}
                     active={pathname.includes(cat.path)}
                   >
                     {cat.name}
