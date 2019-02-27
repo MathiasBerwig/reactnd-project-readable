@@ -54,7 +54,9 @@ class Post extends PureComponent {
               {/* Post Details (2nd Column) */}
               <Grid.Column>
                 {/* Title */}
-                <Header as="h3">{post.title}</Header>
+                <Header as="h3">
+                  <Link to={`/posts/${post.id}`} style={{ color: 'black' }}>{post.title}</Link>
+                </Header>
                 {/* Author, Category, Time */}
                 <span style={{ display: 'block', paddingTop: '.25em' }}>
                   {'Posted by '}
