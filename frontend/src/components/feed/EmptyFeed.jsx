@@ -10,27 +10,28 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-function PostEmpty(props) {
+function EmptyFeed(props) {
   const { loading } = props;
 
   return loading
-    ? (<Loader active>Loading your post</Loader>)
+    ? (<Loader active>Loading Posts</Loader>)
     : (
       <Segment basic placeholder>
         <Header icon textAlign="center">
-          <Icon name="spy" />
+          <Icon name="add circle" />
           <Header.Content>
-            We found no post here.
+            This category has no posts.
           </Header.Content>
         </Header>
         <Segment.Inline>
-          <Button primary as={Link} to="/">Show all posts</Button>
+          <Button primary as={Link} to="/new-post">Create Post</Button>
+          <Button as={Link} to="/">Show all posts</Button>
         </Segment.Inline>
       </Segment>
     );
 }
 
-PostEmpty.propTypes = {
+EmptyFeed.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
@@ -40,4 +41,4 @@ function mapStateToProps({ loading }) {
   };
 }
 
-export default connect(mapStateToProps)(PostEmpty);
+export default connect(mapStateToProps)(EmptyFeed);

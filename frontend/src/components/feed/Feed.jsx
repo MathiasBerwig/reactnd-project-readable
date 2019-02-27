@@ -8,7 +8,7 @@ import { PropTypes } from 'prop-types';
 import { handleReceivePosts } from '../../actions/posts';
 import { orderPosts } from '../../api/helper';
 import Post from '../post/Post';
-import FeedEmpty from './FeedEmpty';
+import EmptyFeed from './EmptyFeed';
 
 class Feed extends PureComponent {
   componentDidMount() {
@@ -43,7 +43,7 @@ class Feed extends PureComponent {
         <Header as="h1">{this.getCurrentCategoryFromPath() || 'All Posts'}</Header>
         {
           orderedPosts === undefined || orderedPosts.length === 0
-            ? <FeedEmpty />
+            ? <EmptyFeed />
             : (
               <List relaxed>
                 {

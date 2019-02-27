@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { handleVotePost, handleReceivePost } from '../../actions/posts';
 import { formatCommentCount } from '../../api/helper';
 import './Post.css';
-import PostEmpty from './PostEmpty';
+import EmptyPost from './EmptyPost';
 
 class Post extends PureComponent {
   componentDidMount() {
@@ -34,7 +34,7 @@ class Post extends PureComponent {
     const post = posts.find(p => p.id === postId);
 
     return post === undefined
-      ? <PostEmpty />
+      ? <EmptyPost />
       : (
         <Card fluid>
           <Grid columns={2} padded>
