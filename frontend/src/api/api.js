@@ -65,15 +65,11 @@ export const votePost = (postId, option) => fetch(`${api}/posts/${postId}`, {
 
 // #region Comments
 
-export const getComments = (postId) => {
-  fetch(`${api}/posts/${postId}/comments`, headers)
-    .then(res => res.json());
-};
+export const getComments = postId => fetch(`${api}/posts/${postId}/comments`, { headers })
+  .then(res => res.json());
 
-export const getComment = (commentId) => {
-  fetch(`${api}/comments/${commentId}`, headers)
-    .then(res => res.json());
-};
+export const getComment = commentId => fetch(`${api}/comments/${commentId}`, { headers })
+  .then(res => res.json());
 
 export const createComment = comment => fetch(`${api}/comments`, {
   method: 'POST',
@@ -104,4 +100,5 @@ export const voteComment = (commentId, option) => fetch(`${api}/comments/${comme
   },
   body: JSON.stringify({ option }),
 }).then(res => res.json());
+
 // #endregion
