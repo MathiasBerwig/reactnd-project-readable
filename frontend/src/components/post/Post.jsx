@@ -55,7 +55,7 @@ class Post extends PureComponent {
               <Grid.Column>
                 {/* Title */}
                 <Header as="h3">
-                  <Link to={`/posts/${post.id}`} style={{ color: 'black' }}>{post.title}</Link>
+                  <Link to={`/${post.category}/${post.id}`} style={{ color: 'black' }}>{post.title}</Link>
                 </Header>
                 {/* Author, Category, Time */}
                 <span style={{ display: 'block', paddingTop: '.25em' }}>
@@ -70,7 +70,7 @@ class Post extends PureComponent {
                 <span className="actions">
                   {/* Comments */}
                   <span className="choice">
-                    <Link to={`/posts/${post.id}/comments`}>
+                    <Link to={`/${post.category}/${post.id}/comments`}>
                       <Icon name="comments outline" />
                       {formatCommentCount(post.commentCount)}
                     </Link>

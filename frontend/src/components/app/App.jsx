@@ -33,10 +33,10 @@ class App extends Component {
               <NavMenu />
               {/* Show Feed with all posts */}
               <Route path="/" exact component={Feed} />
-              {/* Show specific post (contains nested routes) */}
-              <Route path="/posts/:postId" component={SinglePostContainer} />
               {/* Show Feed with category-specific posts */}
               <Route path="/:category" exact component={Feed} />
+              {/* Show specific post (contains nested routes) */}
+              <Route path="/:category/:postId" component={SinglePostContainer} />
             </Fragment>
           )}
       </Router>
