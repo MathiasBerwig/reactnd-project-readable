@@ -27,10 +27,12 @@
   display: block;
   padding-top: 1em;
 }
-.post-actions-container .icon {
-  margin-right: .4em;
+
+.post-actions-container .action-button {
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
-.post-actions-container .action:not(:first-child) {
-  margin-left: 1.5em;
+.post-actions-container .action-button:not(:first-of-type) {
+  margin-left: 1.25em !important;
 }
