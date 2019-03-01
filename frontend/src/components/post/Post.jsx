@@ -32,7 +32,7 @@ class Post extends PureComponent {
     const { posts, postId, match } = this.props;
     const post = posts.find(p => p.id === postId);
 
-    return post === undefined
+    return post === undefined || post.deleted
       ? <EmptyPost />
       : (
         <Card fluid>
