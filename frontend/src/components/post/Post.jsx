@@ -36,7 +36,7 @@ class Post extends PureComponent {
       ? <EmptyPost />
       : (
         <Card fluid>
-          <Grid columns={2} padded>
+          <Grid columns={2} padded style={{ paddingTop: '.5em', paddingBottom: '.5em' }}>
             {/* Score and Details */}
             <Grid.Row>
               {/* 1st column */}
