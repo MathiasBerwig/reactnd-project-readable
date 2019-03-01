@@ -1,5 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 
+export function randomId() {
+  return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
+}
+
 export function orderPosts(posts, orderBy) {
   switch (orderBy) {
     case 'score': // Biggest score first
@@ -13,9 +17,21 @@ export function orderPosts(posts, orderBy) {
   }
 }
 
+export function orderCommentsByScore(comments) {
+  return comments.slice().sort((a, b) => b.voteScore - a.voteScore);
+}
+
 export function formatCommentCount(commentCount) {
   if (commentCount === 0) {
     return 'no comments';
   }
   return `${commentCount} comment${commentCount === 1 ? '' : 's'}`;
+}
+
+export function formatScoreCount(scoreCount) {
+  if (scoreCount === 0) {
+    return 'zero points';
+  }
+
+  return `${scoreCount} point${scoreCount === 1 ? '' : 's'}`;
 }

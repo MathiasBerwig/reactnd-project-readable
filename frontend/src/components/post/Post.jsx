@@ -6,13 +6,14 @@ import {
   Card,
   Grid,
 } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleVotePost, handleReceivePost } from '../../actions/posts';
 import './Post.css';
 import EmptyPost from './EmptyPost';
 import PostScore from './PostScore';
 import PostDetails from './PostDetails';
+import PostComments from './PostComments';
 
 class Post extends PureComponent {
   componentDidMount() {
@@ -43,6 +44,19 @@ class Post extends PureComponent {
               {/* 2nd column */}
               <PostDetails post={post} showBody={match.params.postId !== undefined} />
             </Grid.Row>
+
+            {/* Comments (2nd row) */}
+            <Route
+              path={`${match.path}/comments`}
+              render={() => (
+                <Grid.Row>
+                  <Grid.Column width="1" />
+                  <Grid.Column>
+                    <PostComments />
+                  </Grid.Column>
+                </Grid.Row>
+              )}
+            />
           </Grid>
         </Card>
       );
