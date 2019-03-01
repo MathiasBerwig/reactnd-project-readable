@@ -2,9 +2,11 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Button, Modal } from 'semantic-ui-react';
 import { formatCommentCount } from '../../api/helper';
+import { handleDeletePost } from '../../actions/posts';
 
 class PostActions extends PureComponent {
   handleViewCommentsToggle = () => {
@@ -18,7 +20,10 @@ class PostActions extends PureComponent {
   }
 
   handleDelete = () => {
-    // TODO
+    const { history, dispatch, post } = this.props;
+    const nextPage = history.location.pathname === '/' ? '/' : `/${post.category}`;
+    dispatch(handleDeletePost(post.id));
+    history.push(nextPage);
   }
 
   render() {
@@ -63,7 +68,8 @@ class PostActions extends PureComponent {
 
 PostActions.propTypes = {
   post: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
 
-export default withRouter(PostActions);
+export default withRouter(connect()(PostActions));

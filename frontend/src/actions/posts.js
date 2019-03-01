@@ -4,6 +4,7 @@ import {
   getPostsByCategory,
   votePost,
   updatePost,
+  deletePost,
 } from '../api/api';
 import { showLoading, hideLoading } from './loading';
 
@@ -64,6 +65,18 @@ export function handleVotePost(postId, option) {
   return (dispatch) => {
     votePost(postId, option).then((post) => {
       dispatch(updatePostAction(post));
+    });
+  };
+}
+
+function deletePostAction(postId) {
+  return { type: DELETE_POST, postId };
+}
+
+export function handleDeletePost(postId) {
+  return (dispatch) => {
+    deletePost(postId).then(() => {
+      dispatch(deletePostAction(postId));
     });
   };
 }

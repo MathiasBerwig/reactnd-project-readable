@@ -20,7 +20,7 @@ function EmptyFeed(props) {
         <Header icon textAlign="center">
           <Icon name="add circle" />
           <Header.Content>
-            This category has no posts.
+            No posts here.
             <Header.Subheader>Write the first one ;)</Header.Subheader>
           </Header.Content>
         </Header>
