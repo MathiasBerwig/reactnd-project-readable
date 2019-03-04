@@ -1,4 +1,4 @@
-# Readable API Server
+# Readable WebApp
 
 This is my second project for Udacity's React Nanodegree. The aim of the project is to build a content and comment web app. Users are able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users also are be able to edit and delete posts and comments.
 
