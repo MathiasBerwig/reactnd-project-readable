@@ -12,31 +12,39 @@ import EmptyFeed from './EmptyFeed';
 
 class Feed extends PureComponent {
   componentDidMount() {
-    this.onRouteChanged();
+    this.routeChanged();
   }
 
   componentDidUpdate(prevProps) {
     const { location: { pathname } } = this.props;
     // Check if user has selected an new category
     if (prevProps.location.pathname !== pathname) {
-      this.onRouteChanged();
+      this.routeChanged();
     }
   }
 
-  onRouteChanged() {
-    const { dispatch } = this.props;
-    const category = this.getCurrentCategoryFromPath();
-    dispatch(handleReceivePosts(category));
-  }
-
+  /**
+   * Returns the current category from the browser path.
+   * If in "All posts", an empty string is returned.
+   */
   getCurrentCategoryFromPath() {
     const { location: { pathname } } = this.props;
     return pathname.substr(1);
   }
 
+  /**
+   * Called when the URL changes and new posts need to be loaded.
+   */
+  routeChanged() {
+    const { dispatch } = this.props;
+    const category = this.getCurrentCategoryFromPath();
+    dispatch(handleReceivePosts(category));
+  }
+
   render() {
     const { posts, orderBy } = this.props;
-    const orderedPosts = orderAndFilterPosts(posts, this.getCurrentCategoryFromPath(), orderBy);
+    const currentCategory = this.getCurrentCategoryFromPath();
+    const orderedPosts = orderAndFilterPosts(posts, currentCategory, orderBy);
 
     return (
       <Container className="post-container">
