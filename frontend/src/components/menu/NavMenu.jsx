@@ -18,7 +18,7 @@ class NavMenu extends PureComponent {
   render() {
     const { categories, location: { pathname } } = this.props;
     return (
-      <Menu fixed="top" inverted>
+      <Menu fixed="top" inverted borderless>
         <Container>
           {/* Readable Logo  */}
           <Menu.Item as={Link} to="/" header>
