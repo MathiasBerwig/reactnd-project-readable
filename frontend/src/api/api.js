@@ -13,15 +13,12 @@ const headers = {
 };
 
 // #region Categories
-
 export const getCategories = () => fetch(`${api}/categories`, { headers })
   .then(res => res.json())
   .then(data => data.categories);
-
 // #endregion
 
 // #region Posts
-
 export const getPost = postId => fetch(`${api}/posts/${postId}`, { headers })
   .then(res => (res.ok ? res.json() : undefined));
 
@@ -60,11 +57,9 @@ export const votePost = (postId, option) => fetch(`${api}/posts/${postId}`, {
   },
   body: JSON.stringify({ option }),
 }).then(res => res.json());
-
 // #endregion
 
 // #region Comments
-
 export const getComments = postId => fetch(`${api}/posts/${postId}/comments`, { headers })
   .then(res => res.json());
 
@@ -100,5 +95,4 @@ export const voteComment = (commentId, option) => fetch(`${api}/comments/${comme
   },
   body: JSON.stringify({ option }),
 }).then(res => res.json());
-
 // #endregion

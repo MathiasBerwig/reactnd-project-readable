@@ -12,6 +12,8 @@ export default function comments(state = {}, action) {
         ...state,
         action.comment,
       ];
+    case RECEIVE_COMMENTS:
+      return action.comments.filter(c => !c.deleted);
     case UPDATE_COMMENT:
       return [
         ...state.filter(c => c.id !== action.comment.id),
@@ -21,8 +23,6 @@ export default function comments(state = {}, action) {
       return [
         ...state.filter(c => c.id !== action.commentId),
       ];
-    case RECEIVE_COMMENTS:
-      return action.comments.filter(c => !c.deleted);
     default:
       return state;
   }

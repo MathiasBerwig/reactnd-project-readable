@@ -1,34 +1,15 @@
 import {
-  getComments,
   createComment,
+  getComments,
   voteComment,
   deleteComment,
 } from '../api/api';
 import { handleReceivePost } from './posts';
 import { randomId } from '../api/helper';
 
-export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
-export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+
+// #region CREATE
 export const CREATE_COMMENT = 'CREATE_COMMENT';
-export const DELETE_COMMENT = 'DELETE_COMMENT';
-export const UPDATE_COMMENT = 'UPDATE_COMMENT';
-export const VOTE_COMMENT = 'VOTE_COMMENT';
-
-export const COMMENT_UP_VOTE_VALUE = 'upVote';
-export const COMMENT_DOWN_VOTE_VALUE = 'downVote';
-
-
-function receiveCommentsAction(comments) {
-  return { type: RECEIVE_COMMENTS, comments };
-}
-
-export function handleReceiveComments(postId) {
-  return (dispatch) => {
-    getComments(postId).then((comments) => {
-      dispatch(receiveCommentsAction(comments));
-    });
-  };
-}
 
 function createCommentAction(comment) {
   return { type: CREATE_COMMENT, comment };
@@ -48,10 +29,35 @@ export function handleCreateComment(parentId, body, author) {
     });
   };
 }
+// #endregion
+
+// #region READ
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+
+function receiveCommentsAction(comments) {
+  return { type: RECEIVE_COMMENTS, comments };
+}
+
+export function handleReceiveComments(postId) {
+  return (dispatch) => {
+    getComments(postId).then((comments) => {
+      dispatch(receiveCommentsAction(comments));
+    });
+  };
+}
+// #endregion
+
+// #region UPDATE
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
+export const VOTE_COMMENT = 'VOTE_COMMENT';
 
 function updateCommentAction(comment) {
   return { type: UPDATE_COMMENT, comment };
 }
+
+export const COMMENT_UP_VOTE_VALUE = 'upVote';
+export const COMMENT_DOWN_VOTE_VALUE = 'downVote';
 
 export function handleVoteComment(commentId, option) {
   return (dispatch) => {
@@ -60,6 +66,10 @@ export function handleVoteComment(commentId, option) {
     });
   };
 }
+// #endregion
+
+// #region DELETE
+export const DELETE_COMMENT = 'DELETE_COMMENT';
 
 function deleteCommentAction(commentId) {
   return { type: DELETE_COMMENT, commentId };
@@ -73,3 +83,4 @@ export function handleDeleteComment(commentId) {
     });
   };
 }
+// #endregion

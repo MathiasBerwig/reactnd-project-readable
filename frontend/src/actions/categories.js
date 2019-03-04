@@ -1,5 +1,6 @@
 import { getCategories } from '../api/api';
 
+// #region READ
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 
 function receiveCategories(categories) {
@@ -11,3 +12,4 @@ export function handleReceiveCategories() {
     dispatch(receiveCategories(categories));
   });
 }
+// #endregion
