@@ -35,8 +35,8 @@ class NavMenu extends PureComponent {
               {
                 categories.map(cat => (
                   <Dropdown.Item
-                    as={Link}
                     key={cat.path}
+                    as={Link}
                     to={`/${cat.path}`}
                     active={pathname.includes(cat.path)}
                   >
