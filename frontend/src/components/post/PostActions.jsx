@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { Icon, Button, Modal } from 'semantic-ui-react';
 import { formatCommentCount } from '../../api/helper';
 import { handleDeletePost } from '../../actions/posts';
+import EditPost from '../edit-post/EditPost';
 
 class PostActions extends PureComponent {
   handleViewCommentsToggle = () => {
@@ -38,10 +39,15 @@ class PostActions extends PureComponent {
         </Button>
 
         {/* Edit */}
-        <Button className="action-button" size="mini" basic onClick={this.handleEdit}>
-          <Icon name="edit outline" />
-          Edit
-        </Button>
+        <EditPost
+          post={post}
+          trigger={(
+            <Button className="action-button" size="mini" basic onClick={this.handleEdit}>
+              <Icon name="edit outline" />
+              Edit
+            </Button>
+          )}
+        />
 
         {/* Delete */}
         <Modal

@@ -5,8 +5,10 @@ import {
   votePost,
   updatePost,
   deletePost,
+  createPost,
 } from '../api/api';
 import { showLoading, hideLoading } from './loading';
+import { randomId } from '../api/helper';
 
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
@@ -45,6 +47,28 @@ export function handleReceivePosts(category) {
     ).then((posts) => {
       dispatch(receivePostsAction(posts));
       dispatch(hideLoading());
+    });
+  };
+}
+
+function createPostAction(post) {
+  return { type: CREATE_POST, post };
+}
+
+export function handleCreatePost(post) {
+  const {
+    author, title, body, category,
+  } = post;
+  return (dispatch) => {
+    createPost({
+      id: randomId(),
+      timestamp: new Date().getTime(),
+      author,
+      title,
+      body,
+      category,
+    }).then((p) => {
+      dispatch(createPostAction(p));
     });
   };
 }

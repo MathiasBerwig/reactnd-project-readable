@@ -3,10 +3,17 @@ import {
   UPDATE_POST,
   RECEIVE_POST,
   DELETE_POST,
+  CREATE_POST,
 } from '../actions/posts';
 
 export default function posts(state = {}, action) {
   switch (action.type) {
+    case CREATE_POST: {
+      return [
+        ...state,
+        action.post,
+      ];
+    }
     case RECEIVE_POST: {
       return action.post ? [action.post] : [];
     }

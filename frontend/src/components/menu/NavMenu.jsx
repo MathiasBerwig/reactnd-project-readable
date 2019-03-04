@@ -12,6 +12,7 @@ import {
   Button,
 } from 'semantic-ui-react';
 import SortPostsDropdown from './SortPostsDropdown';
+import EditPost from '../edit-post/EditPost';
 
 class NavMenu extends PureComponent {
   render() {
@@ -52,9 +53,7 @@ class NavMenu extends PureComponent {
           <Menu.Menu position="right">
             {/* New Post button */}
             <Menu.Item>
-              <Button as={Link} to="/new-post" primary>
-                New Post
-              </Button>
+              <EditPost trigger={(<Button primary>New Post</Button>)} />
             </Menu.Item>
           </Menu.Menu>
         </Container>
