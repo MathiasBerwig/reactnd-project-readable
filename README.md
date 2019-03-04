@@ -4,6 +4,10 @@ This is my second project for Udacity's React Nanodegree. The aim of the project
 
 This repository includes code for the backend API Server provided by Udacity and the front-end portion of the project.
 
+## Screenshot
+
+![Screen capture of the Readable WebApp](images/readable.gif)
+
 ## Attribution
 
 The following icons from [Freepik](https://www.freepik.com/) under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) are used by this project:
