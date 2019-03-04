@@ -88,9 +88,11 @@ export function handleUpdatePost(post) {
   };
 }
 
-export const POST_UP_VOTE_VALUE = 'upVote';
-export const POST_DOWN_VOTE_VALUE = 'downVote';
+export const VOTE = { UP: 'upVote', DOWN: 'downVote' };
 
+/**
+ * @param {VOTE} option
+ */
 export function handleVotePost(postId, option) {
   return (dispatch) => {
     votePost(postId, option).then((post) => {

@@ -15,8 +15,7 @@ import ReactTimeAgo from 'react-time-ago';
 import {
   handleReceiveComments,
   handleVoteComment,
-  COMMENT_UP_VOTE_VALUE as UpVote,
-  COMMENT_DOWN_VOTE_VALUE as DownVote,
+  VOTE as COMMENT_VOTE,
   handleCreateComment,
   handleDeleteComment,
 } from '../../actions/comments';
@@ -73,12 +72,12 @@ class PostComments extends PureComponent {
                 <Comment.Text>{c.body}</Comment.Text>
                 <Comment.Actions>
                   {/* Like */}
-                  <Comment.Action onClick={() => this.handleVote(c.id, UpVote)}>
+                  <Comment.Action onClick={() => this.handleVote(c.id, COMMENT_VOTE.UP)}>
                     <Icon name="thumbs up outline" />
                     <span style={{ userSelect: 'none' }}>Like</span>
                   </Comment.Action>
                   {/* Dislike */}
-                  <Comment.Action onClick={() => this.handleVote(c.id, DownVote)}>
+                  <Comment.Action onClick={() => this.handleVote(c.id, COMMENT_VOTE.DOWN)}>
                     <Icon name="thumbs down outline" />
                     <span style={{ userSelect: 'none' }}>Dislike</span>
                   </Comment.Action>

@@ -56,9 +56,11 @@ function updateCommentAction(comment) {
   return { type: UPDATE_COMMENT, comment };
 }
 
-export const COMMENT_UP_VOTE_VALUE = 'upVote';
-export const COMMENT_DOWN_VOTE_VALUE = 'downVote';
+export const VOTE = { UP: 'upVote', DOWN: 'downVote' };
 
+/**
+ * @param {VOTE} option option to vote.
+ */
 export function handleVoteComment(commentId, option) {
   return (dispatch) => {
     voteComment(commentId, option).then((post) => {
