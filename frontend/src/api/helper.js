@@ -4,16 +4,20 @@ export function randomId() {
   return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
 }
 
-export function orderPosts(posts, orderBy) {
+export function orderAndFilterPosts(posts, category, orderBy) {
+  const filteredPosts = category
+    ? posts.slice().filter(p => p.category === category)
+    : posts.slice();
+
   switch (orderBy) {
     case 'score': // Biggest score first
-      return posts.slice().sort((a, b) => (b.voteScore - a.voteScore));
+      return filteredPosts.sort((a, b) => (b.voteScore - a.voteScore));
     case 'newest': // Most recent posts first
-      return posts.slice().sort((a, b) => (b.timestamp - a.timestamp));
+      return filteredPosts.sort((a, b) => (b.timestamp - a.timestamp));
     case 'oldest': // Oldest score first
-      return posts.slice().sort((a, b) => (a.timestamp - b.timestamp));
+      return filteredPosts.sort((a, b) => (a.timestamp - b.timestamp));
     default:
-      return posts;
+      return filteredPosts;
   }
 }
 

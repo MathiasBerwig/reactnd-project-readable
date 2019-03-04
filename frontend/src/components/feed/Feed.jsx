@@ -6,7 +6,7 @@ import { List, Container, Header } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { handleReceivePosts } from '../../actions/posts';
-import { orderPosts } from '../../api/helper';
+import { orderAndFilterPosts } from '../../api/helper';
 import Post from '../post/Post';
 import EmptyFeed from './EmptyFeed';
 
@@ -36,7 +36,7 @@ class Feed extends PureComponent {
 
   render() {
     const { posts, orderBy } = this.props;
-    const orderedPosts = orderPosts(posts, orderBy);
+    const orderedPosts = orderAndFilterPosts(posts, this.getCurrentCategoryFromPath(), orderBy);
 
     return (
       <Container className="post-container">
