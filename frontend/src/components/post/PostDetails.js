@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Grid, Header } from 'semantic-ui-react';
 import ReactTimeAgo from 'react-time-ago';
 import { Link } from 'react-router-dom';
+import Markdown from 'markdown-to-jsx';
 import PostActions from './PostActions';
 
 function PostDetails(props) {
@@ -28,7 +29,7 @@ function PostDetails(props) {
       </span>
 
       {/* Post body */}
-      {showBody && <div className="bodyText">{post.body}</div>}
+      {showBody && <Markdown className="bodyText">{post.body}</Markdown>}
 
       {/* Actions */}
       <PostActions post={post} />
