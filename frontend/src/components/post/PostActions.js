@@ -17,10 +17,6 @@ class PostActions extends PureComponent {
     history.push(`/${post.category}/${post.id}/${commentsVisible ? '' : 'comments'}`);
   }
 
-  handleEdit = () => {
-    // TODO
-  }
-
   handleDelete = () => {
     const { history, dispatch, post } = this.props;
     const nextPage = history.location.pathname === '/' ? '/' : `/${post.category}`;
@@ -33,24 +29,24 @@ class PostActions extends PureComponent {
     return (
       <span className="post-actions-container">
 
-        {/* View Comments */}
+        {/* View Comments (toggle visibility) */}
         <Button className="action-button" size="mini" basic onClick={this.handleViewCommentsToggle}>
           <Icon name="comments outline" />
           {formatCommentCount(post.commentCount)}
         </Button>
 
-        {/* Edit */}
+        {/* Edit (modal) */}
         <EditPost
           post={post}
           trigger={(
-            <Button className="action-button" size="mini" basic onClick={this.handleEdit}>
+            <Button className="action-button" size="mini" basic>
               <Icon name="edit outline" />
               Edit
             </Button>
           )}
         />
 
-        {/* Delete */}
+        {/* Delete (modal) */}
         <Modal
           basic
           header="Are you sure?"
