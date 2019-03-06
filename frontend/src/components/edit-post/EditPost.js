@@ -33,6 +33,7 @@ class EditPost extends PureComponent {
 
   handleFormClear = () => {
     this.setState({
+      post: EditPost.defaultProps.post,
       success: false,
     });
   }
@@ -98,7 +99,13 @@ class EditPost extends PureComponent {
             <Message success header={post.id ? 'Post updated!' : 'Post created!'} content="Congrats my friend." />
             <Form.Group inline>
               <Form.Button onClick={this.handleFormClear}>Clear</Form.Button>
-              <Form.Button onClick={this.handleFormSubmit} primary>Submit</Form.Button>
+              <Form.Button
+                primary
+                onClick={this.handleFormSubmit}
+                disabled={post.author.trim() === '' || post.category.trim() === '' || post.body.trim() === ''}
+              >
+              Submit
+              </Form.Button>
             </Form.Group>
           </Form>
         </Modal.Content>

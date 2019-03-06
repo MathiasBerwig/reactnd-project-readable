@@ -31,22 +31,22 @@ class PostComments extends PureComponent {
     dispatch(handleReceiveComments(id));
   }
 
-  handleVote = (commentId, option) => {
-    const { dispatch } = this.props;
-    dispatch(handleVoteComment(commentId, option));
-  }
+  handleFormChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleDelete = (commentId) => {
     const { dispatch } = this.props;
     dispatch(handleDeleteComment(commentId));
   }
 
-  handleFormChange = (e, { name, value }) => this.setState({ [name]: value })
+  handleVote = (commentId, option) => {
+    const { dispatch } = this.props;
+    dispatch(handleVoteComment(commentId, option));
+  }
 
   handleFormSubmit = () => {
     const { comment, author } = this.state;
     const { dispatch, post } = this.props;
-    dispatch(handleCreateComment(post.id, comment, author));
+    dispatch(handleCreateComment(post.id, comment.trim(), author.trim()));
     this.setState({ comment: '', author: '', submitted: true });
   }
 
@@ -106,15 +106,32 @@ class PostComments extends PureComponent {
 
         <Form onSubmit={this.handleFormSubmit} success={submitted} reply>
           {/* Comment text area */}
-          <Form.TextArea value={comment} required name="comment" onChange={this.handleFormChange} />
+          <Form.TextArea
+            value={comment}
+            required
+            name="comment"
+            onChange={this.handleFormChange}
+          />
           <Form.Group inline>
             {/* Author Name */}
-            <Form.Input value={author} required name="author" placeholder="Your name" onChange={this.handleFormChange} />
+            <Form.Input
+              value={author}
+              required
+              name="author"
+              placeholder="Your name"
+              onChange={this.handleFormChange}
+            />
             {/* Submit button */}
-            <Button content="Say it" labelPosition="left" icon="bullhorn" primary />
+            <Button
+              content="Say it"
+              labelPosition="left"
+              icon="bullhorn"
+              primary
+              disabled={comment.trim() === '' || author.trim() === ''}
+            />
           </Form.Group>
           {/* Success message */}
-          <Message success header="Alright" content="You're the master of comments!" />
+          <Message success header="All right!" content="You're the master of comments." />
         </Form>
       </Comment.Group>
     );

@@ -62,7 +62,13 @@ class EditComment extends PureComponent {
               onChange={this.handleFormChange}
             />
             {/* Save/submit */}
-            <Form.Button onClick={this.handleFormSubmit} primary>Save</Form.Button>
+            <Form.Button
+              primary
+              onClick={this.handleFormSubmit}
+              disabled={comment.body.trim() === ''}
+            >
+            Save
+            </Form.Button>
             {/* Success message */}
             <Message success header="Retificated" content="Hope you said it right this time." />
           </Form>
