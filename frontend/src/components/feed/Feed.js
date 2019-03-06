@@ -84,9 +84,9 @@ Feed.defaultProps = {
 
 function mapStateToProps({ categories, posts, preferences = {} }) {
   return {
+    posts,
     categories,
     orderBy: preferences.orderBy,
-    posts: Object.values(posts),
   };
 }
 

@@ -5,7 +5,7 @@ import {
   DELETE_COMMENT,
 } from '../actions/comments';
 
-export default function comments(state = {}, action) {
+export default function comments(state = [], action) {
   switch (action.type) {
     case CREATE_COMMENT:
       return [

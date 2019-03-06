@@ -70,7 +70,7 @@ NavMenu.propTypes = {
 
 function mapStateToProps({ categories }) {
   return {
-    categories: Object.values(categories),
+    categories,
   };
 }
 

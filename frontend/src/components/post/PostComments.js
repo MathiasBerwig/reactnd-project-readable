@@ -119,8 +119,8 @@ PostComments.propTypes = {
 function mapStateToProps({ comments, posts }, ownProps) {
   const { match: { params: { postId } } } = ownProps;
   return {
-    post: Object.values(posts).find(p => p.id === postId),
-    comments: Object.values(comments),
+    post: posts.find(p => p.id === postId),
+    comments,
   };
 }
 

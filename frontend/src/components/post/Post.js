@@ -73,7 +73,7 @@ Post.propTypes = {
 
 function mapStateToProps({ posts }) {
   return {
-    posts: Object.values(posts),
+    posts,
   };
 }
 
