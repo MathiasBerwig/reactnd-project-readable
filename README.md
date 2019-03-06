@@ -8,6 +8,12 @@ This repository includes code for the backend API Server provided by Udacity and
 
 ![Screen capture of the Readable WebApp](images/readable.gif)
 
+## Libraries Used
+
+- [Semantic UI](https://react.semantic-ui.com/)
+- [react-time-ago](https://www.npmjs.com/package/react-time-ago)
+- React Redux, Redux Thunk, PropTypes and well-known react stuff
+
 ## Attribution
 
 The following icons from [Freepik](https://www.freepik.com/) under [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) are used by this project:
