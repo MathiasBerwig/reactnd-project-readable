@@ -1,4 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/jsx-filename-extension */
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
@@ -10,29 +12,27 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-function EmptyFeed(props) {
+function EmptyPost(props) {
   const { loading } = props;
 
   return loading
-    ? (<Loader active>Loading Posts</Loader>)
+    ? (<Loader active>Loading your post</Loader>)
     : (
       <Segment basic placeholder>
         <Header icon textAlign="center">
-          <Icon name="add circle" />
+          <Icon name="spy" />
           <Header.Content>
-            No posts here.
-            <Header.Subheader>Write the first one ;)</Header.Subheader>
+            We found no post here.
           </Header.Content>
         </Header>
         <Segment.Inline>
-          <Button primary as={Link} to="/new-post">New Post</Button>
-          <Button as={Link} to="/">Show all posts</Button>
+          <Button primary as={Link} to="/">Show all posts</Button>
         </Segment.Inline>
       </Segment>
     );
 }
 
-EmptyFeed.propTypes = {
+EmptyPost.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
@@ -42,4 +42,4 @@ function mapStateToProps({ loading }) {
   };
 }
 
-export default connect(mapStateToProps)(EmptyFeed);
+export default connect(mapStateToProps)(EmptyPost);

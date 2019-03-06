@@ -14,6 +14,10 @@ The following icons from [Freepik](https://www.freepik.com/) under [Creative Com
 
 - [Reddit](https://www.flaticon.com/free-icon/reddit_1384077)
 
+## Code Style
+
+The project aims to follow Airbnb React/JS styling guide. The exceptions are jsx instead js extensions, due to Udacity review system supporting only the js extension; and the usage of forbid prop types (in special object generics), because the project does not use typescript and has no definitions for model classes.
+
 ## Run Project
 
 To get started developing right away:
