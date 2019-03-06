@@ -42,7 +42,6 @@ class EditPost extends PureComponent {
     const { dispatch } = this.props;
     const { post } = this.state;
     dispatch(!post.id ? handleCreatePost(post) : handleUpdatePost(post));
-    this.handleFormClear();
     this.setState({ success: true });
   }
 
@@ -50,7 +49,7 @@ class EditPost extends PureComponent {
     const { trigger, categoryOptions } = this.props;
     const { post, success } = this.state;
     return (
-      <Modal trigger={trigger}>
+      <Modal trigger={trigger} onClose={this.handleFormClear}>
         <Modal.Header>{post.id ? 'Edit post' : 'Write a new post'}</Modal.Header>
         <Modal.Content>
           <Form success={success}>
