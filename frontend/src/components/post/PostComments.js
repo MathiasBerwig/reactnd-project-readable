@@ -21,6 +21,7 @@ import {
   handleDeleteComment,
 } from '../../actions/comments';
 import { formatScoreCount, orderCommentsByScore } from '../../api/helper';
+import EditComment from './edit-comment/EditComment';
 
 class PostComments extends PureComponent {
   state = { comment: '', author: '', submitted: false };
@@ -82,6 +83,16 @@ class PostComments extends PureComponent {
                     <Icon name="thumbs down outline" />
                     <span style={{ userSelect: 'none' }}>Dislike</span>
                   </Comment.Action>
+                  {/* Edit (modal) */}
+                  <EditComment
+                    comment={c}
+                    trigger={(
+                      <Comment.Action>
+                        <Icon name="redo" />
+                        <span style={{ userSelect: 'none' }}>Retract</span>
+                      </Comment.Action>
+                    )}
+                  />
                   {/* Delete */}
                   <Comment.Action onClick={() => this.handleDelete(c.id)}>
                     <Icon name="trash alternate outline" />

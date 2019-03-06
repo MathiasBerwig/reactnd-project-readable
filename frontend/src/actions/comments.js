@@ -3,6 +3,7 @@ import {
   getComments,
   voteComment,
   deleteComment,
+  updateComment,
 } from '../api/api';
 import { handleReceivePost } from './posts';
 import { randomId } from '../api/helper';
@@ -63,8 +64,16 @@ export const VOTE = { UP: 'upVote', DOWN: 'downVote' };
  */
 export function handleVoteComment(commentId, option) {
   return (dispatch) => {
-    voteComment(commentId, option).then((post) => {
-      dispatch(updateCommentAction(post));
+    voteComment(commentId, option).then((response) => {
+      dispatch(updateCommentAction(response));
+    });
+  };
+}
+
+export function handleUpdateComment(comment) {
+  return (dispatch) => {
+    updateComment(comment).then((response) => {
+      dispatch(updateCommentAction(response));
     });
   };
 }
