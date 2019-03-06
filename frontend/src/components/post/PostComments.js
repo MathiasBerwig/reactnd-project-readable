@@ -4,34 +4,24 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-  Comment,
-  Form,
-  Button,
-  Icon,
-  Message,
-} from 'semantic-ui-react';
+import { Comment, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import ReactTimeAgo from 'react-time-ago';
 import {
   handleReceiveComments,
   handleVoteComment,
   VOTE as COMMENT_VOTE,
-  handleCreateComment,
   handleDeleteComment,
 } from '../../actions/comments';
 import { formatScoreCount, orderCommentsByScore } from '../../api/helper';
 import EditComment from './edit-comment/EditComment';
+import PostCommentsForm from './PostCommentsForm';
 
 class PostComments extends PureComponent {
-  state = { comment: '', author: '', submitted: false };
-
   componentDidMount() {
     const { dispatch, post: { id } } = this.props;
     dispatch(handleReceiveComments(id));
   }
-
-  handleFormChange = (e, { name, value }) => this.setState({ [name]: value })
 
   handleDelete = (commentId) => {
     const { dispatch } = this.props;
@@ -43,16 +33,8 @@ class PostComments extends PureComponent {
     dispatch(handleVoteComment(commentId, option));
   }
 
-  handleFormSubmit = () => {
-    const { comment, author } = this.state;
-    const { dispatch, post } = this.props;
-    dispatch(handleCreateComment(post.id, comment.trim(), author.trim()));
-    this.setState({ comment: '', author: '', submitted: true });
-  }
-
   render() {
     const { post, comments } = this.props;
-    const { author, comment, submitted } = this.state;
     const orderedComments = orderCommentsByScore(comments);
     return (
       <Comment.Group>
@@ -104,35 +86,7 @@ class PostComments extends PureComponent {
           ))
         }
 
-        <Form onSubmit={this.handleFormSubmit} success={submitted} reply>
-          {/* Comment text area */}
-          <Form.TextArea
-            value={comment}
-            required
-            name="comment"
-            onChange={this.handleFormChange}
-          />
-          <Form.Group inline>
-            {/* Author Name */}
-            <Form.Input
-              value={author}
-              required
-              name="author"
-              placeholder="Your name"
-              onChange={this.handleFormChange}
-            />
-            {/* Submit button */}
-            <Button
-              content="Say it"
-              labelPosition="left"
-              icon="bullhorn"
-              primary
-              disabled={comment.trim() === '' || author.trim() === ''}
-            />
-          </Form.Group>
-          {/* Success message */}
-          <Message success header="All right!" content="You're the master of comments." />
-        </Form>
+        <PostCommentsForm post={post} />
       </Comment.Group>
     );
   }
