@@ -8,6 +8,13 @@ This repository includes code for the backend API Server provided by Udacity and
 
 ![Screen capture of the Readable WebApp](images/readable.gif)
 
+## Extra Features
+
+This project contains features that were not required for the minimal approval, like:
+
+- Markdown text in post body, provided by [markdown-to-jsx](https://github.com/probablyup/markdown-to-jsx);
+- User avatars in post comments, provided by [Adorable Avatars API](http://avatars.adorable.io/).
+
 ## Libraries Used
 
 - [Semantic UI](https://react.semantic-ui.com/)
