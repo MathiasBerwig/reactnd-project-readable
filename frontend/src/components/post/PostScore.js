@@ -7,10 +7,10 @@ import { Grid, Icon } from 'semantic-ui-react';
 import { VOTE as POST_VOTE } from '../../actions/posts';
 
 function PostScore(props) {
-  const { post, handleVote } = props;
+  const { post, handleVote, alignTop } = props;
 
   return (
-    <Grid.Column width={1} textAlign="center" verticalAlign="middle">
+    <Grid.Column width={1} textAlign="center" verticalAlign={alignTop ? 'top' : 'middle'}>
       {/* UpVote Action */}
       <Grid.Row>
         <Icon link size="large" name="arrow up" onClick={() => handleVote(POST_VOTE.UP, post)} />
@@ -28,8 +28,13 @@ function PostScore(props) {
 }
 
 PostScore.propTypes = {
+  alignTop: PropTypes.bool,
   post: PropTypes.object.isRequired,
   handleVote: PropTypes.func.isRequired,
+};
+
+PostScore.defaultProps = {
+  alignTop: false,
 };
 
 export default PostScore;

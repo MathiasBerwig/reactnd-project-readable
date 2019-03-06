@@ -32,6 +32,7 @@ class Post extends PureComponent {
   render() {
     const { posts, postId, match } = this.props;
     const post = posts.find(p => p.id === postId);
+    const showBody = match.params.postId !== undefined;
 
     return post === undefined || post.deleted
       ? <EmptyPost />
@@ -41,9 +42,9 @@ class Post extends PureComponent {
             {/* Score and Details */}
             <Grid.Row>
               {/* 1st column */}
-              <PostScore handleVote={this.handleVote} post={post} />
+              <PostScore handleVote={this.handleVote} post={post} alignTop={showBody} />
               {/* 2nd column */}
-              <PostDetails post={post} showBody={match.params.postId !== undefined} />
+              <PostDetails post={post} showBody={showBody} />
             </Grid.Row>
 
             {/* Comments (2nd row) */}
