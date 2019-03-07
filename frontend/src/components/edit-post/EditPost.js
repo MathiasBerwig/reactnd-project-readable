@@ -109,7 +109,7 @@ class EditPost extends PureComponent {
               <Form.Input
                 name="body"
                 value={post.body}
-                label="Text"
+                label="Markdown Text"
                 placeholder="Your message to the world"
                 control={TextArea}
                 required
