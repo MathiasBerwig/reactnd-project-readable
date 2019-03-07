@@ -11,6 +11,7 @@ import {
   Loader,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import EditPost from '../edit-post/EditPost';
 
 function EmptyFeed(props) {
   const { loading } = props;
@@ -27,7 +28,7 @@ function EmptyFeed(props) {
           </Header.Content>
         </Header>
         <Segment.Inline>
-          <Button primary as={Link} to="/new-post">New Post</Button>
+          <EditPost trigger={(<Button primary as={Link} to="/new-post">New Post</Button>)} />
           <Button as={Link} to="/">Show all posts</Button>
         </Segment.Inline>
       </Segment>
